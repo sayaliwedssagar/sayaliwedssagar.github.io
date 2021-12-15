@@ -89,10 +89,16 @@ footer {
 	justify-content: center;
 }
 .cd {
-	flex-wrap: wrap;
-	text-align: center;
-	position: relative;
+    flex-wrap: wrap;
+    text-align: center;
+    position: relative;
 }
+@media screen and (min-width: 480px) {
+    .cd {
+        position: relative;
+        top: 10em;
+    }
+  }
 .cd__unit-group {
 	margin-bottom: 1.5em;
 }
