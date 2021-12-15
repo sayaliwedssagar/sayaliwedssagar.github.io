@@ -91,6 +91,7 @@ footer {
 .cd {
 	flex-wrap: wrap;
 	text-align: center;
+	position: relative;
 }
 .cd__unit-group {
 	margin-bottom: 1.5em;
