@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Sayali Weds Sagar</title>
+        <meta charset="utf-8">
+        <!-- include the termynal stylesheet -->
+        <link rel="stylesheet" href="termynal.css">
+        <!-- some custom styles for the page -->
+        <link rel="stylesheet" href="timer.css">
+        <!-- some custom styles for the page -->
+        <link href="https://fonts.googleapis.com/css?family=Fira+Mono">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+        <style>
+            body {
+                padding: 0; margin: 0;
+                background: #252a33; /*#1a1e24; */
+                width: 100%;
+                min-height: 100vh;
+                display: -webkit-box; display: -ms-flexbox; display: flex;
+                -webkit-box-align: center; -ms-flex-align: center; align-items: center;
+                -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center;
+                -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- the termynal container -->
+        <div id="termynal" data-termynal>
+           
+        </div>
+
+
+
+        <!-- <main> -->
+            <div class="intro">
+                <!-- <h1 class="intro__headline">The Unix Epochalypse</h1> -->
+                <!-- <p class="intro__subheadline">Happening In</p> -->
+                <div class="cd">
+                    <div class="cd__unit-group">
+                         <!--<div class="cd__unit">
+                            <div class="cd__digits">
+                                <div class="cd__digit" data-col>
+                                    <div data-pos="next">-</div>
+                                    <div data-pos="prev">-</div>
+                                </div>
+                                <div class="cd__digit" data-col>
+                                    <div data-pos="next">-</div>
+                                    <div data-pos="prev">-</div>
+                                </div>
+                            </div>
+                            <div class="cd__unit-label">Year(s)</div>
+                        </div>
+                        <div class="cd__unit">
+                            <div class="cd__digits">
+                                <div class="cd__digit" data-col>
+                                    <div data-pos="next">-</div>
+                                    <div data-pos="prev">-</div>
+                                </div>
+                                <div class="cd__digit" data-col>
+                                    <div data-pos="next">-</div>
+                                    <div data-pos="prev">-</div>
+                                </div>
+                            </div>
+                            <div class="cd__unit-label">Month(s)</div>
+                        </div>--><!---->
+                        <div class="cd__unit">
+                            <div class="cd__digits">
+                                <div class="cd__digit" data-col>
+                                    <div data-pos="next">-</div>
+                                    <div data-pos="prev">-</div>
+                                </div>
+                                <div class="cd__digit" data-col>
+                                    <div data-pos="next">-</div>
+                                    <div data-pos="prev">-</div>
+                                </div>
+                            </div>
+                            <div class="cd__unit-label">Day(s)</div>
+                        </div>
+                    </div>
+                    <div class="cd__unit-group">
+                        <div class="cd__unit">
+                            <div class="cd__digits">
+                                <div class="cd__digit" data-col>
+                                    <div data-pos="next">-</div>
+                                    <div data-pos="prev">-</div>
+                                </div>
+                                <div class="cd__digit" data-col>
+                                    <div data-pos="next">-</div>
+                                    <div data-pos="prev">-</div>
+                                </div>
+                            </div>
+                            <div class="cd__unit-label">Hour(s)</div>
+                        </div>
+                        <div class="cd__unit">
+                            <div class="cd__digits">
+                                <div class="cd__digit" data-col>
+                                    <div data-pos="next">-</div>
+                                    <div data-pos="prev">-</div>
+                                </div>
+                                <div class="cd__digit" data-col>
+                                    <div data-pos="next">-</div>
+                                    <div data-pos="prev">-</div>
+                                </div>
+                            </div>
+                            <div class="cd__unit-label">Minute(s)</div>
+                        </div>
+                        <div class="cd__unit">
+                            <div class="cd__digits">
+                                <div class="cd__digit" data-col>
+                                    <div data-pos="next">-</div>
+                                    <div data-pos="prev">-</div>
+                                </div>
+                                <div class="cd__digit" data-col>
+                                    <div data-pos="next">-</div>
+                                    <div data-pos="prev">-</div>
+                                </div>
+                            </div>
+                            <div class="cd__unit-label">Second(s)</div>
+                        </div>
+                    </div>
+                    <!-- <div class="cd__progress">
+                        <span class="cd__unit-label">Seconds Since Unix Epoch</span><br>
+                        <strong data-progress>-</strong>
+                    </div> -->
+                </div>
+
+            </div>
+           
+        <!-- </main> -->
+     
+
+        <!-- include and initialise termynal.js -->
+        <script src="termynal.js" data-termynal-container="#termynal"></script>
+
+
+    </body>
+    <script>
+        // add question and answers here
+        qdata=['when did we meet?','where did we met?','when are we getting married?','Save the date!'];
+        ansdata = ['October 12, 2017','Embedded Controls COE AHM','December 28, 2021','December 28, 2021'];
+        const timer = ms => new Promise(res => setTimeout(res, ms));
+
+        const delayPromise = (time) => { 
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                resolve(`Promise resolved for ${time}s`)
+                }, time)
+            })
+        }
+
+        const main = async () => {
+        // const myPromiseArray = [runinvitation("1","2"), runinvitation("3","4")]
+        console.log('Before For Each Loop')
+
+   
+        // This works well too - the classic for loop :)
+        for (let i = 0; i < qdata.length; i++) {
+
+            const ans = ansdata[i];
+            const qes = qdata[i];
+
+            var termynal = new Termynal('#termynal',
+                    {
+                        lineData: [
+                            { type: 'input', value: qes },
+                            { type: 'input', value: ans }
+                        ]
+                    }
+                );
+
+            const result = await delayPromise(7000);
+            console.log(result);
+           
+            if (i===qdata.length-1)
+            {
+                console.log("end of scipt");
+            }
+             else{
+                var t = document.getElementById('termynal');
+                t.innerHTML="";
+            }
+            const result1 = await delayPromise(1000);
+            console.log(result1);
+        }
+
+        console.log('After For Each Loop')
+        }
+
+        main();
+            
+
+
+    </script>
+
+    <script>
+        window.addEventListener("DOMContentLoaded",() => {
+	const uec = new UnixEpochalypseCountdown(".cd");
+	const infoBtn = document.getElementById("info-btn");
+
+	if (infoBtn)
+		infoBtn.addEventListener("click",jumpToHelp);
+});
+
+function jumpToHelp() {
+	const info = document.getElementById("info");
+
+	if (info) {
+		window.scrollTo({
+			top: info.offsetTop,
+			left: 0,
+			behavior: "smooth"
+		});
+	}
+}
+
+class UnixEpochalypseCountdown {
+	constructor(qs) {
+		this.el = document.querySelector(qs);
+		this.time = [];
+		this.animTimeout = null;
+		this.updateTimeout = null;
+		this.update();
+	}
+	getProgressInSeconds() {
+		if (typeof moment === "function") {
+			const now = moment();
+			const ms = Math.ceil(now.valueOf() / 1e3);
+
+			return ms >> 0;
+		} else {
+			return 0;
+		}
+	}
+	getTimeLeft() {
+		let timeLeft = {
+			y: 0,
+			mo: 0,
+			d: 0,
+			h: 0,
+			m: 0,
+			s: 0
+		};
+
+		if (typeof moment === "function") {
+            // add time here in yyyy-mm-ddTHH:MM:SS
+			const later =moment('2021-12-28T12:40:00.000');
+			const now = moment();
+			const diff = moment.duration(later.diff(now));
+
+			if (diff.valueOf() >= 0) {
+				timeLeft.y += diff.years();
+				timeLeft.mo += diff.months();
+				timeLeft.d += diff.days();
+				timeLeft.h += diff.hours();
+				timeLeft.m += diff.minutes();
+				timeLeft.s += diff.seconds();
+			}
+		}
+
+		return timeLeft;
+	}
+	clearAnimations() {
+		if (this.el) {
+			const colAnimsToClear = this.el.querySelectorAll("[data-col]");
+
+			Array.from(colAnimsToClear).forEach(a => {
+				a.classList.remove("cd__digit--roll-in");
+			});
+
+			const posAnimsToClear = this.el.querySelectorAll("[data-pos]");
+
+			Array.from(posAnimsToClear).forEach(a => {
+				a.classList.remove("cd__next-digit-fade","cd__prev-digit-fade");
+			});
+		}
+	}
+	update(doAnimations = false) {
+		// start with all dashes
+		if (!this.time.length) {
+			let digitCount = 8;
+
+			while (digitCount--)
+				this.time.push("-");
+		}
+		// update data
+		const display = this.getTimeLeft();
+
+		const displayDigits = [];
+
+        
+
+		for (let v in display) {
+            if(v!="y" && v!="mo")
+            {
+                const digits = `${display[v]}`.split("");
+                // add zero to single digits
+                if (digits.length < 2)
+                    digits.unshift("0");
+
+                displayDigits.push(...digits);
+            }
+		}
+
+        // console.log(displayDigits);
+		// update display
+		const cols = this.el.querySelectorAll("[data-col]");
+
+		if (cols) {
+			Array.from(cols).forEach((c,i) => {
+                
+				const digit = displayDigits[i];
+
+				if (digit !== this.time[i]) {
+					const next = c.querySelector(`[data-pos="next"]`);
+					const prev = c.querySelector(`[data-pos="prev"]`);
+
+					if (doAnimations === true) {
+						c.classList.add("cd__digit--roll-in");
+						next.classList.add("cd__next-digit-fade");
+						prev.classList.add("cd__prev-digit-fade");
+					}
+
+					next.innerHTML = digit;
+					prev.innerHTML = this.time[i];
+				}
+			});
+		}
+
+		this.time = displayDigits;
+		// progress in seconds
+		const progress = this.el.querySelector("[data-progress]");
+
+		if (progress)
+			progress.innerHTML = this.getProgressInSeconds();
+		// loop
+		clearTimeout(this.animTimeout);
+		this.animTimeout = setTimeout(this.clearAnimations.bind(this),500);
+
+		clearTimeout(this.updateTimeout);
+		this.updateTimeout = setTimeout(this.update.bind(this,true),1e3);
+	}
+}
+    </script>
+</html>
